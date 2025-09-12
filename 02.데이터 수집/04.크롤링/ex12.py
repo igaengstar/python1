@@ -9,7 +9,7 @@ options.add_experimental_option('detach', True)
 
 browser = webdriver.Chrome(options=options)
 browser.maximize_window()
-keyword='파이썬'
+keyword='자바'
 url=f'https://www.hanbit.co.kr/search/search_list.html?keyword={keyword}'
 browser.get(url)
 
@@ -21,9 +21,21 @@ time.sleep(2)
 soup = BeautifulSoup(browser.page_source, 'lxml')
 books = soup.find('div', {'class':'ser_list_wrap'})
 books = books.find_all('li', {'class':'ser_bg'})
+
+list = []
 for book in books:
+    no = len(list) + 1
     title=book.strong.getText()
     image=book.img['src']
     author=book.span.getText()
     link = 'https://www.hanbit.co.kr/' + book.a['href']
     print(title, image, author, link)
+    data ={'no':no, 'title':title, 'image':image, 'author':author, 'link':link}
+    list.append(data)
+
+import json
+#json 파일에 저장
+with open('02.데이터 수집/data/books.json', 'a', encoding='utf-8') as file:
+    json.dump(list, file, indent='\t', ensure_ascii=False)
+
+print('프로그램종료!')
