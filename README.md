@@ -8,7 +8,7 @@ Incoming Graduate Student, University of Maryland (MIM, 2026)
 ## About This Repository
 
 This repository contains Python coursework and practice projects completed during 
-a two-month Python training program (Gwangmyeong City PM School, 2024).
+a two-month Python training program (Gwangmyeong City PM School, 2025).
 
 ---
 
